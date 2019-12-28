@@ -56,6 +56,7 @@
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
+  <component name="ProjectId" id="1Vb19dEg9DniSzR14VKxdxBouLN" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -95,7 +96,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="LAP" type="Python.FlaskServer" factoryName="Flask server">
+    <configuration name="LAP" type="Python.FlaskServer">
       <module name="LAP" />
       <option name="target" value="$PROJECT_DIR$/api_server.py" />
       <option name="targetType" value="PATH" />
