@@ -1,6 +1,10 @@
 import pytest
 
-@pytest.fixture(scope='function')
-def test_name():
-    name={"e":"eason", "b":"bason" , "c": "cason"}
-    return name
+
+@pytest.fixture(scope="module")
+def sign_print():
+    a = "1"
+    b = "2"
+    return a, b
+
+

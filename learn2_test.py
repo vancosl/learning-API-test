@@ -1,14 +1,25 @@
 import pytest
 
+
+def test_result(test_add):
+    assert test_add == 2
+    print(test_add)
+
+
 @pytest.fixture()
-def testdata2():
-    print("fixture start")
-    yield testdata2
-    print("fixture end")
+def test_add(send_value):
+    a = send_value[0]
+    b = send_value[1]
+    c = a + b
+    return c
 
-#@pytest.mark.usefixtures('testdata2')
-def test_data2(testdata2):
-    print("working")
 
-if __name__ == '__main__':
-    pytest.main('-q learn2_test.py')
+@pytest.fixture()
+def send_value():
+    a = [1, 2]
+    return a
+
+
+def test_sign_print(sign_print):
+    print(sign_print[0])
+    assert 0

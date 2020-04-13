@@ -1,3 +1,5 @@
 flask==1.0.2
 requests==2.22.0
 pycryptodome==3.7.3
+pytest ==5.3.2
+xlrd ==1.2.0
