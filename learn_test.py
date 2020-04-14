@@ -69,7 +69,18 @@ class TestGetSearch(object):
         r = requests.get(url1, params=payload)
         result = r.json()
         print(result)
-        assert 0
+        assert result["code"] == 10200
+        assert result["data"] == []
+        assert result["message"] == "success"
+
+    def test_get_search_with_wrong_method(self):
+        url1 = url+"/search/"
+        payload = {"q": "selenium1"}
+        r = requests.post(url1, params=payload)
+        result = r.json()
+        print(result)
+        assert result["code"] == 10101
+        assert result["message"] == "request method error"
 
 def test_open():
     r = requests.get(url)
