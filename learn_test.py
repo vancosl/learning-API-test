@@ -51,6 +51,25 @@ class TestGetUID(object):
         assert result["message"] == "request method error"
 
 
+class TestGetSearch(object):
+
+    def test_get_search_with_right_method(self):
+        data_list = ["selenium教程", "seleniumhq.org", "selenium环境安装"]
+        url1 = url+"/search/"
+        payload = {"q": "selenium"}
+        r = requests.get(url1, params=payload)
+        result = r.json()
+        assert result["code"] == 10200
+        assert result["data"] == data_list
+        assert result["message"] == "success"
+
+    def test_get_search_with_right_method_and_keyword(self):
+        url1 = url+"/search/"
+        payload = {"q": "selenium1"}
+        r = requests.get(url1, params=payload)
+        result = r.json()
+        print(result)
+        assert 0
 
 def test_open():
     r = requests.get(url)
