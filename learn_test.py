@@ -65,7 +65,7 @@ class TestGetSearch(object):
 
     def test_get_search_with_right_method_and_keyword(self):
         url1 = url+"/search/"
-        payload = {"q": "selenium1"}
+        payload = {"q": "selenium"}
         r = requests.get(url1, params=payload)
         result = r.json()
         print(result)

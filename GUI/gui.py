@@ -11,10 +11,17 @@ def btnsubmitOp(self):
     result = result + "\n请求的方式："
     result = result + ["GET", "POST"][v.get()]
     result = result + "\n请求的参数：" + para
-    r = requests.get(url)
-    r1 = str(r.status_code)
 
-    result = result + "\n" + "-"*20 + "请求结果" + "-"*20 + "\n" + r1
+    if v.get() == 1:
+        r = requests.post(url)
+        r1 = str(r.json())
+        result = result + "\n" + "-" * 20 + "请求结果" + "-" * 20 + "\n" + r1
+    else:
+        para = str(para)
+        r = requests.get(url, params=para)
+        r1 = str(r.json())
+        result = result + "\n" + "-" * 20 + "请求结果" + "-" * 20 + "\n" + r1
+
     text_result.delete(0.0, END)
     text_result.insert(1.0, result)
 
