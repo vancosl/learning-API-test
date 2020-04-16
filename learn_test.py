@@ -83,35 +83,6 @@ class TestGetSearch(object):
         assert result["message"] == "request method error"
 
 
-def test_open():
-    r = requests.get(url)
-    result = r.json()
-    print(result)
-    assert result["code"] == 1020
-
-
-def test_get_with_name(test_name):
-    name = test_name["e"]
-    print(name)
-    r = requests.get(url + "/user/" + name)
-    result = r.json()
-    assert result["code"] == 1020
-
-
-def test_get_with_uid():
-    uid = "1"
-    r = requests.get(url + "/user/" + uid)
-    result = r.json()
-    print(result)
-
-
-def test_get_with_params():
-    payload = {"q": "selenium"}
-    r = requests.get(url + "/search/", params=payload)
-    result = r.text
-    print(result)
-
-
 def test_post_with_params_json():
     payload = {"name": "jack", "age": 22, "height": 177}
     r = requests.post(url + "/add_user", json=payload)
