@@ -83,56 +83,111 @@ class TestGetSearch(object):
         assert result["message"] == "request method error"
 
 
-def test_post_with_params_json():
-    payload = {"name": "jack", "age": 22, "height": 177}
-    r = requests.post(url + "/add_user", json=payload)
-    result = r.json()
-    print(result)
+class TestLoginIn(object):
+
+    def test_login_with_post(self):
+        payload = {"username": "admin", "password": "a123456"}
+        r = requests.post(url + "/login", data=payload)
+        result = r.json()
+        assert result["code"] == 10200
+        assert result["message"] == "login success"
+
+    def test_login_with_post_wrong_params(self):
+        payload_none_username = {"password": "a123456"}
+        payload_none_password = {"username": "admin"}
+        payload_null_username = {"username": "", "password": "a123456"}
+        payload_null_password = {"username": "admin", "password": ""}
+        payload_wrong_username = {"username": "admin1", "password": "a123456"}
+        payload_wrong_password = {"username": "admin", "password": "a1234561"}
+        r1 = requests.post(url + "/login", data=payload_none_username)
+        r2 = requests.post(url + "/login", data=payload_none_password)
+        result1 = r1.json()
+        result2 = r2.json()
+        assert result1["code"] == 10102
+        assert result2["code"] == 10102
+        assert result1["message"] == "username or password is None"
+        assert result2["message"] == "username or password is None"
+        r3 = requests.post(url + "/login", data=payload_null_username)
+        r4 = requests.post(url + "/login", data=payload_null_password)
+        result3 = r3.json()
+        result4 = r4.json()
+        assert result3["code"] == 10103
+        assert result4["code"] == 10103
+        assert result3["message"] == "username or password is null"
+        assert result4["message"] == "username or password is null"
+        r5 = requests.post(url + "/login", data=payload_wrong_username)
+        r6 = requests.post(url + "/login", data=payload_wrong_password)
+        result5 = r5.json()
+        result6 = r6.json()
+        assert result5["code"] == 10104
+        assert result6["code"] == 10104
+        assert result5["message"] == "username or password error"
+        assert result6["message"] == "username or password error"
 
 
-def test_post_with_params_data():
-    payload = {"username": "admin", "password": "a123456"}
-    r = requests.post(url + "/login", data=payload)
-    result = r.json()
-    print(result)
+class TestAddUser(object):
+
+    def test_add_user(self):
+        payload = {"name": "jack", "age": 22, "height": 177}
+        r = requests.post(url + "/add_user", json=payload)
+        result = r.json()
+        print(result)
+        assert result["code"] == 10200
+        assert result["message"] == "add success"
+        assert result["data"] == payload
+
+    def test_add_user_with_wrong_params_format(self):
+        payload = {"name": "jack", "age": 22, "height": 177}
+        r = requests.post(url + "/add_user", params=payload)
+        result = r.json()
+        print(result)
+        assert result["code"] == 10105
+        assert result["message"] == "format error"
+
+    def test_add_user_with_null_key(self):
+        payload = {"age": 22, "height": 177}
+        r = requests.post(url + "/add_user", json=payload)
+        result = r.json()
+        print(result)
+        assert result["code"] == 10102
+        assert result["message"] == "key null"
+
+    def test_add_user_with_wrong_name(self):
+        payload_null_name = {"name": "", "age": 22, "height": 177}
+        payload_exist_name = {"name": "tom", "age": 22, "height": 177}
+        r = requests.post(url + "/add_user", json=payload_null_name)
+        result = r.json()
+        assert result["code"] == 10103
+        assert result["message"] == "name null"
+        r = requests.post(url + "/add_user", json=payload_exist_name)
+        result = r.json()
+        assert result["code"] == 10104
+
+    def test_add_user_wrong_method(self):
+        payload = {"name": "jack", "age": 22, "height": 177}
+        r = requests.get(url + "/add_user", json=payload)
+        result = r.json()
+        print(result)
+        assert result["code"] == 10101
+        assert result["message"] == "request method error"
 
 
-def test_upload_file():
-    files = {'file': open('D:\\Test\\uploads\\log.txt', 'rb')}
-    r = requests.post(url + "/upload", files=files)
-    result = r.json()
-    print(result)
+class TestPostHeader(object):
+    def test_post_header(self):
+        headers = {"Content-Type": "application/json", "token": "1234"}
+        r = requests.post(url + "/header", headers=headers)
+        result = r.json()
+        assert result["code"] == 10200
+        assert result["message"] == "header ok!"
+        assert result["data"] == headers
 
 
-def test_put():
-    data = {"name": "华为手机", "price": "3999"}
-    r = requests.put(url + "/phone/1", data=data)
-    result = r.json()
-    print(result)
-
-
-def test_get_phone():
-    r = requests.get(url + "/phone/1")
-    result = r.json()
-    print(result)
-
-
-def test_login_with_session():
-    s = requests.Session()
-    data = {"username": "jack", "password": "123"}
-    r = s.post(url + "/user_login", data=data)
-    result = r.json()
-    r2 = s.get(url + "/user_data")
-    result2 = r2.json()
-    print(result)
-    print(result2)
-
-
-def test_get_eventid():
-    r = requests.get(url + "/get_activity")
-    result = r.json()
-    activity_id = result["data"]["id"]
-    r = requests.get(url + "/get_user")
-    result = r.json()
-    user_id = result["data"]["id"]
-    print(user_id)
+class TestPostAuth(object):
+    @pytest.mark.slow
+    def test_post_auth(self):
+        auth = {"userid": 10200, "password": "admin123"}
+        url1 = url + "/auth"
+        r = requests.post(url1, auth=auth)
+        result = r.json()
+        print(result)
+        assert 0
