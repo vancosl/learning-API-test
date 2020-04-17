@@ -185,9 +185,10 @@ class TestPostHeader(object):
 class TestPostAuth(object):
     @pytest.mark.slow
     def test_post_auth(self):
-        auth = {"userid": 10200, "password": "admin123"}
         url1 = url + "/auth"
-        r = requests.post(url1, auth=auth)
+        r = requests.post(url1, auth=("admin", "admin123"))
         result = r.json()
         print(result)
         assert 0
+
+class

@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3dff2052-3abd-4321-b6ac-ba22a1f0d1f1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learn2_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/learn2_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/learn_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/learn_test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -204,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587019467512</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="test">
+      <created>1587112394728</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1587112394728</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
