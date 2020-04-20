@@ -212,3 +212,27 @@ class TestPostAuth(object):
         assert result["message"] == auth_assert[3][1]
 
 
+class TestUploadFile(object):
+
+    def test_upload_file(self):
+        url1 = url + "/upload"
+        file_path = {"file": open("test.txt", "rb")}
+        r = requests.post(url1, files=file_path)
+        result = r.json()
+        assert result["code"] == 10200
+        assert result["message"] == "upload success!"
+
+
+class TestMoreUsed(object):
+
+    def test_more_used_get(self):
+        pid = 1
+        url1 = url + "/phone/" + str(pid)
+        phone_info = {"id": pid, "name": "小米手机", "price": 1999}
+        r = requests.get(url1)
+        result = r.json()
+        print(result)
+        assert result["code"] == 10201
+        assert result["message"] == "get success"
+        assert result["data"] == phone_info
+
