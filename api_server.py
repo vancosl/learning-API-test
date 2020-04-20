@@ -132,7 +132,7 @@ def post_auth():
     if request.method == 'POST':
         auth = request.headers.get("Authorization")
         if auth is None:
-            return jsonify({"code": 10101, "message": "Authorization None"})
+            return jsonify({"code": 10100, "message": "Authorization None"})
         else:
             auth = auth.split()
             auth_parts = base64.b64decode(auth[1]).decode('utf-8').partition(':')

@@ -183,12 +183,32 @@ class TestPostHeader(object):
 
 
 class TestPostAuth(object):
-    @pytest.mark.slow
-    def test_post_auth(self):
-        url1 = url + "/auth"
-        r = requests.post(url1, auth=("admin", "admin123"))
-        result = r.json()
-        print(result)
-        assert 0
 
-class
+    def test_post_auth(self, auth_data, auth_assert):
+        url1 = url + "/auth"
+        auth_right = auth_data[0]
+        auth_none = auth_data[1]
+        auth_null = auth_data[2]
+        auth_wrong = auth_data[3]
+
+        r = requests.post(url1, auth=auth_right)
+        result = r.json()
+        assert result["code"] == auth_assert[0][0]
+        assert result["message"] == auth_assert[0][1]
+
+        r1 = requests.post(url1, auth=auth_none)
+        result = r1.json()
+        assert result["code"] == auth_assert[1][0]
+        assert result["message"] == auth_assert[1][1]
+
+        r2 = requests.post(url1, auth=auth_null)
+        result = r2.json()
+        assert result["code"] == auth_assert[2][0]
+        assert result["message"] == auth_assert[2][1]
+
+        r3 = requests.post(url1, auth=auth_wrong)
+        result = r3.json()
+        assert result["code"] == auth_assert[3][0]
+        assert result["message"] == auth_assert[3][1]
+
+
