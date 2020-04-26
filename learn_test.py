@@ -10,7 +10,7 @@ class TestHelloWorld(object):
         r = requests.get(url + "/")
         result = r.json()
         print(result)
-        assert result["code"] == 10201
+        assert result["code"] == 10200
         assert result["message"] == "Welcome to API testing"
 
 
@@ -66,11 +66,12 @@ class TestGetSearch(object):
     def test_get_search_with_right_method_and_keyword(self):
         url1 = url + "/search/"
         payload = {"q": "selenium"}
+        data = ["selenium教程", "seleniumhq.org", "selenium环境安装"]
         r = requests.get(url1, params=payload)
         result = r.json()
         print(result)
         assert result["code"] == 10200
-        assert result["data"] == []
+        assert result["data"] == data
         assert result["message"] == "success"
 
     def test_get_search_with_wrong_method(self):
