@@ -228,11 +228,50 @@ class TestMoreUsed(object):
     def test_more_used_get(self):
         pid = 1
         url1 = url + "/phone/" + str(pid)
-        phone_info = {"id": pid, "name": "小米手机", "price": 1999}
+        phone_info = {"id": 1, "name": "小米手机", "price": 1999}
+        data_assert = ["code", "message", "data"]
+        data_value = [10201, "get success", phone_info]
         r = requests.get(url1)
         result = r.json()
         print(result)
-        assert result["code"] == 10201
-        assert result["message"] == "get success"
-        assert result["data"] == phone_info
+        assert result[data_assert[0]] == data_value[0]
+        assert result[data_assert[1]] == data_value[1]
+        assert result[data_assert[2]] == data_value[2]
 
+    def test_more_used_put(self):
+        pid = 1
+        url1 = url + "/phone/" + str(pid)
+        phone_info = {"id": 1, "name": "小米手机", "price": 1999}
+        r = requests.put(url1, phone_info)
+        result = r.json()
+        print(result)
+
+    def test_more_used_delete(self):
+        pid = 1
+        url1 = url + "/phone/" + str(pid)
+        phone_info = {"id": 1, "name": "小米手机", "price": 1999}
+        r = requests.delete(url1)
+        result = r.json()
+        print(result)
+        assert result["code"] == 10203
+        assert result["message"] == "delete success"
+
+
+class TestSessionLogin(object):
+    def test_session_login(self):
+        url1 = url + "/user_login"
+        session = {"username": "test321", "password": "test123"}
+        r = requests.post(url1, data=session)
+        result = r.json()
+        print(result)
+        assert result["code"] == 10200
+        assert result["message"] == "login success"
+
+    def test_session_user_data(self):
+        url1 = url + "/user_data"
+        session_data = {"username": "test321", "password": "test123"}
+        r = requests.get(url1, params=session_data)
+        result = r.json()
+        print(result)
+        assert result["code"] == 10200
+        assert result["message"] == "hello, stranger"

@@ -17,3 +17,6 @@ def auth_assert():
     auth_null_assert = (10102, "Authorization null")
     auth_wrong_assert = (10103, "Authorization fail!")
     return auth_right_assert, auth_none_assert, auth_null_assert, auth_wrong_assert
+
+
+

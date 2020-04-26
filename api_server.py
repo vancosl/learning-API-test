@@ -217,7 +217,7 @@ def session_login():
         session['username'] = username
         return jsonify({"code": 10200, "message": 'login success'})
     else:
-        return jsonify({"code": 10200, "message": 'login faile'})
+        return jsonify({"code": 10201, "message": 'login fail'})
 
 
 @app.route("/user_data")
