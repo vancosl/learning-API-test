@@ -1,6 +1,7 @@
 import requests
 import pytest
 
+
 url = "http://127.0.0.1:5000"
 
 
@@ -217,7 +218,7 @@ class TestUploadFile(object):
 
     def test_upload_file(self):
         url1 = url + "/upload"
-        file_path = {"file": open("test.txt", "rb")}
+        file_path = {"file": open("log.txt", "rb")}
         r = requests.post(url1, files=file_path)
         result = r.json()
         assert result["code"] == 10200
@@ -250,7 +251,6 @@ class TestMoreUsed(object):
     def test_more_used_delete(self):
         pid = 1
         url1 = url + "/phone/" + str(pid)
-        phone_info = {"id": 1, "name": "小米手机", "price": 1999}
         r = requests.delete(url1)
         result = r.json()
         print(result)
@@ -258,21 +258,7 @@ class TestMoreUsed(object):
         assert result["message"] == "delete success"
 
 
-class TestSessionLogin(object):
-    def test_session_login(self):
-        url1 = url + "/user_login"
-        session = {"username": "test321", "password": "test123"}
-        r = requests.post(url1, data=session)
-        result = r.json()
-        print(result)
-        assert result["code"] == 10200
-        assert result["message"] == "login success"
-
-    def test_session_user_data(self):
-        url1 = url + "/user_data"
-        session_data = {"username": "test321", "password": "test123"}
-        r = requests.get(url1, params=session_data)
-        result = r.json()
-        print(result)
-        assert result["code"] == 10200
-        assert result["message"] == "hello, stranger"
+# 通过conftest处理数据的输入与处理
+def test_user_new(user_new_input_data):
+    assert user_new_input_data["code"] == 10200
+    assert user_new_input_data["message"] == "hello, eason"
