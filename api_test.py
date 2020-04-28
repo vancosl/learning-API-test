@@ -185,7 +185,7 @@ class TestPostHeader(object):
 
 
 class TestPostAuth(object):
-
+    #测试数据与Aseert数据剥离
     def test_post_auth(self, auth_data, auth_assert):
         url1 = url + "/auth"
         auth_right = auth_data[0]
@@ -226,7 +226,7 @@ class TestUploadFile(object):
 
 
 class TestMoreUsed(object):
-
+    #单用例中数据剥离
     def test_more_used_get(self):
         pid = 1
         url1 = url + "/phone/" + str(pid)
