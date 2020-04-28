@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3dff2052-3abd-4321-b6ac-ba22a1f0d1f1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learn_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/api_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/api_test_AES.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/api_test_sign.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/api_test_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/api_test_gui.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -257,7 +254,21 @@
       <option name="project" value="LOCAL" />
       <updated>1587973763192</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="APi_test">
+      <created>1588066794561</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1588066794561</updated>
+    </task>
+    <task id="LOCAL-00015" summary="APi_test">
+      <created>1588066935385</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1588066935385</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -282,6 +293,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Finish all cases" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="APi_test" />
+    <option name="LAST_COMMIT_MESSAGE" value="APi_test" />
   </component>
 </project>

@@ -5,7 +5,7 @@ import requests
 #请求处理
 def btnsubmitOp(self):
 
-    url = "http://" + url_entry.get()
+    url = url_entry.get()
     para = para_entry.get()
 
     result = "请求的地址："+ url
